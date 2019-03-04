@@ -2,21 +2,35 @@ import React from 'react';
 import { View, Image, Text } from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection';
+import Button from './Button';
 
 const AlbumDetail = ({album}) => { //los props también se pueden reestructurar, en esta ocasión a album
-    const {title, artist, thumbnail_image} = album;
-    const {headerContentStyle, thumbnailStyle} = styles;
+    const {title, artist, thumbnail_image, image} = album;
+    const {
+        headerContentStyle,
+        headerTextStyle, 
+        thumbnailStyle, 
+        thumbnailContainerStyle,
+        imageStyle} = styles;
     return(
         <Card>
             <CardSection>
-                <View>
+                <View style= {thumbnailContainerStyle}>
                     <Image source = {{ uri: thumbnail_image }} style = {thumbnailStyle}></Image>
                 </View>
                 <View style= {headerContentStyle}>
-                    <Text> {title} </Text>
+                    <Text style = {headerTextStyle}> {title} </Text>
                     <Text> {artist}</Text>
                 </View>
             </CardSection> 
+
+            <CardSection>
+                <Image source = {{ uri: image}} style = { imageStyle }/>
+            </CardSection>
+            
+            <CardSection>
+                <Button />
+            </CardSection>
         </Card>
     );
 };
@@ -27,9 +41,26 @@ const styles = {
         flexDirection: 'column'
     },
 
+    headerTextStyle: {
+        fontSize: 18
+    },
+
     thumbnailStyle: {
         height: 50,
         width: 50
+    },
+
+    thumbnailContainerStyle: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginLeft: 10,
+        marginRight: 10
+    },
+
+    imageStyle:{ //adaptative size
+        height: 300,
+        flex: 1,
+        width: null
     }
 }
 export default AlbumDetail;
