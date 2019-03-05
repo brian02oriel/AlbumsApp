@@ -29,7 +29,7 @@ const AlbumDetail = ({album}) => { //los props también se pueden reestructurar,
             </CardSection>
             
             <CardSection>
-                <Button />
+                <Button onPress = {() => console.log(title)} />
             </CardSection>
         </Card>
     );
