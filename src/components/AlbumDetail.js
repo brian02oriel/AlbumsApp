@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text, Linking } from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection';
 import Button from './Button';
 
 const AlbumDetail = ({album}) => { //los props también se pueden reestructurar, en esta ocasión a album
-    const {title, artist, thumbnail_image, image} = album;
+    const {title, artist, thumbnail_image, image, url} = album;
     const {
         headerContentStyle,
         headerTextStyle, 
@@ -29,7 +29,9 @@ const AlbumDetail = ({album}) => { //los props también se pueden reestructurar,
             </CardSection>
             
             <CardSection>
-                <Button onPress = {() => console.log(title)} />
+                <Button onPress = {() => Linking.openURL(url)} text>
+                    Buy Now
+                </Button>
             </CardSection>
         </Card>
     );
