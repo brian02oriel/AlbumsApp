@@ -7,8 +7,8 @@ class AlbumList extends Component {
     state = { albums: [] };
 
     //Lifecycle component
-    componentWillMount(){
-        console.log('componentWillMount in AlbumList');
+    componentDidMount(){
+        console.log('componentDidMount in AlbumList');
         //debugger; permite poner puntos especificos para detener la ejecución del código
         axios.get('https://rallycoding.herokuapp.com/api/music_albums')
         .then( response => this.setState({ albums: response.data }));
